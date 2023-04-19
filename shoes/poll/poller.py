@@ -5,6 +5,7 @@ import time
 import json
 import requests
 
+
 sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "shoes_project.settings")
 django.setup()
@@ -27,8 +28,7 @@ def poll():
     while True:
         print('Shoes poller polling for data')
         try:
-            # Write your polling logic, here
-            pass
+            get_shoes()
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)

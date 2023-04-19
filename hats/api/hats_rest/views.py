@@ -68,7 +68,7 @@ def api_hat(request, id):
                 content["location"] = location
         except LocationVO.DoesNotExist:
             return JsonResponse(
-                {"message": "Invalid state abbreviation"},
+                {"message": "Invalid Location"},
                 status=400,
             )
         Hats.objects.filter(id=id).update(**content)
