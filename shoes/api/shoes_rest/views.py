@@ -6,6 +6,7 @@ from .models import Shoes,BinVO
 from common.json import ModelEncoder
 # Create your views here.
 
+
 class BinVOEncoder(ModelEncoder):
     model = BinVO
     properties = [
@@ -26,11 +27,11 @@ class ShoeEncoder(ModelEncoder):
         "bins": BinVOEncoder
     }
 
-@require_http_methods(["GET","POST"])
+
+@require_http_methods(["GET", "POST"])
 def api_shoes(request):
     if request.method == "GET":
         shoes = Shoes.objects.all()
-
         return JsonResponse(
             {"shoes": shoes},
             encoder=ShoeEncoder,
@@ -38,15 +39,7 @@ def api_shoes(request):
         )
     else:
         content = json.loads(request.body)
-        try:
-            bin_id = content["bin"]
-            bin = BinVO.objects.get(id=bin_id)
-            content["bin"] = bin
-        except BinVO.DoesNotExist:
-            return JsonResponse(
-                {"message":"Invalid bin_id"},
-                status=400
-                )
+
         shoes = Shoes.objects.create(**content)
         return JsonResponse(
             shoes,
@@ -55,8 +48,8 @@ def api_shoes(request):
         )
 
 
-@require_http_methods(["GET","DELETE","PUT"])
-def api_shoes_details(request,id):
+@require_http_methods(["GET", "DELETE", "PUT"])
+def api_shoes_details(request, id):
     if request.method == "GET":
         shoes = Shoes.objects.get(id=id)
         return JsonResponse(
