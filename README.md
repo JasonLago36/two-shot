@@ -3,7 +3,7 @@
 Team:
 
 Jason Lago - Hat
-* Michael Slaugter - Shoes
+Michael Slaugter - Shoes
 
 ## Design
 
