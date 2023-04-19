@@ -2,8 +2,8 @@
 
 Team:
 
-* Person 1 - Jason Lago will be doing Hat
-* Person 2 - Which microservice?
+Jason Lago - Hat
+* Michael Slaugter - Shoes
 
 ## Design
 
