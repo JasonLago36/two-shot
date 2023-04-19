@@ -39,7 +39,15 @@ def api_shoes(request):
         )
     else:
         content = json.loads(request.body)
-
+        try:
+            bin_id = content["bin"]
+            bin = BinVO.objects.get(id=bin_id)
+            content["bin"] = bin
+        except BinVO.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid bin_id"},
+                status=400
+            )
         shoes = Shoes.objects.create(**content)
         return JsonResponse(
             shoes,
