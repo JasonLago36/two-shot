@@ -21,10 +21,11 @@ class ShoeEncoder(ModelEncoder):
         "id",
         "manufacturer",
         "model_name",
-        "color"
+        "color",
+        "picture_url"
     ]
     encoders = {
-        "bins": BinVOEncoder()
+        "bin": BinVOEncoder
     }
 
 
@@ -54,6 +55,7 @@ def api_shoes(request):
             encoder=ShoeEncoder,
             safe=False,
         )
+
 
 
 @require_http_methods(["GET", "DELETE", "PUT"])
